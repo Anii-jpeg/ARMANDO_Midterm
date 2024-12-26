@@ -65,7 +65,7 @@ class Instructor extends Person {
     }
 }
 
-public class UniversityEnrolmentSystem {
+public class UniversityEnrollmentSystem {
     public static void main(String[] args) {
         // Create two Student objects
         Student student1 = new Student("Anilov Armando", 20, "221002270", "Computer Engineering", 11);
