@@ -1,5 +1,7 @@
+import java.util.Scanner;
+
 class Person {
-    //Person Base Class
+    // Person Base Class
     private String name;
     private int age;
 
@@ -9,14 +11,14 @@ class Person {
     }
 
     public void displayInfo() {
-        //Prints the name and age of the person
+        // Prints the name and age of the person
         System.out.println("Name: " + name);
         System.out.println("Age: " + age);
     }
 }
 
 class Student extends Person {
-    //Student (Subclass of Person)
+    // Student (Subclass of Person)
     private String studentID;
     private String course;
     private int units;
@@ -44,7 +46,7 @@ class Student extends Person {
 }
 
 class Instructor extends Person {
-    //Instructor (Subclass of Person)
+    // Instructor (Subclass of Person)
     private String employeeID;
     private String department;
     private double salary;
@@ -65,21 +67,43 @@ class Instructor extends Person {
     }
 }
 
-public class UniversityEnrollmentSystem {
+public class UniversityEnrolmentSystem {
     public static void main(String[] args) {
-        // Create two Student objects
-        Student student1 = new Student("Anilov Armando", 20, "221002270", "Computer Engineering", 11);
-        Student student2 = new Student("John Paul Dato", 21, "231005253", "Computer Engineering", 11);
+        // Use a try-with-resources block for the Scanner
+        try (Scanner scanner = new Scanner(System.in)) {
+            // Prompt for user input
+            System.out.print("Enter name for Student 1: ");
+            String name1 = scanner.nextLine();
 
-        // Create two Instructor objects
-        Instructor instructor1 = new Instructor("Tanya Carmela Jovillano", 22, "123456789", "Computer Engineering", 35000);
-        Instructor instructor2 = new Instructor("Sarrahlyn Catimbang", 26, "987654321", "Computer Engineering", 50000);
+            System.out.print("Enter age for Student 1: ");
+            int age1 = scanner.nextInt();
 
-        // Use the printDetails() method to print information for each person
-        printDetails(student1);
-        printDetails(student2);
-        printDetails(instructor1);
-        printDetails(instructor2);
+            System.out.print("Enter units for Student 1: ");
+            int units1 = scanner.nextInt();
+            scanner.nextLine(); // Consume the leftover newline
+
+            // Create a Student object
+            Student student1 = new Student(name1, age1, "S1001", "Computer Engineering", units1);
+
+            System.out.print("Enter name for Instructor 1: ");
+            String name2 = scanner.nextLine();
+
+            System.out.print("Enter age for Instructor 1: ");
+            int age2 = scanner.nextInt();
+
+            System.out.print("Enter salary for Instructor 1: ");
+            double salary = scanner.nextDouble();
+
+            // Create an Instructor object
+            Instructor instructor1 = new Instructor(name2, age2, "E2001", "Computer Engineering", salary);
+
+            // Use printDetails() to display info
+            System.out.println("\n--- Student Details ---");
+            printDetails(student1);
+
+            System.out.println("\n--- Instructor Details ---");
+            printDetails(instructor1);
+        } // Scanner is automatically closed here
     }
 
     public static void printDetails(Person p) {
